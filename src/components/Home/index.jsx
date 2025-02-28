@@ -1,4 +1,4 @@
-// import {} from 'StyledComponents';
+// import {} from './StyledComponents';
 
 const Home = () => "Home...";
 
