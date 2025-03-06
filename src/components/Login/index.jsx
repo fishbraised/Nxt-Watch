@@ -6,25 +6,25 @@ import {
   LoginInput,
   CheckboxContainer,
   CheckboxInput,
-  CheckboxParagraph,
+  CheckboxText,
   LoginButton,
-  LoginParagraph,
+  LoginText,
   LoginSpan,
 } from "./StyledComponents";
 
 import { Component } from "react";
 
 class Login extends Component {
-  state = { email: "", password: "" };
+  state = { username: "", password: "" };
 
   submitLogin = async (event) => {
     event.preventDefault();
 
     const URL = "https://apis.ccbp.in/login";
-    const { email, password } = this.state;
+    const { username, password } = this.state;
 
     const userDetails = {
-      email,
+      username,
       password,
     };
 
@@ -40,8 +40,8 @@ class Login extends Component {
     console.log("data: ", data);
   };
 
-  updateEmailInput = (event) => {
-    this.setState({ email: event.target.value });
+  updateUsernameInput = (event) => {
+    this.setState({ username: event.target.value });
   };
 
   updatePasswordInput = (event) => {
@@ -49,18 +49,18 @@ class Login extends Component {
   };
 
   render() {
-    const { email, password } = this.state;
+    const { username, password } = this.state;
 
     return (
       <LoginContainer>
         <LoginContent>
           <LoginForm onSubmit={this.submitLogin}>
-            <WebsiteLogo src="https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-dark-theme-img.png" />
+            <WebsiteLogo src="https://res.cloudinary.com/dkoqbt4pc/image/upload/v1741096340/Nxt%20Watch/nxt-watch-logo-dark-theme.png" />
             <LoginInput
-              onChange={this.updateEmailInput}
-              value={email}
+              onChange={this.updateUsernameInput}
+              value={username}
               type="text"
-              placeholder="Email"
+              placeholder="Username"
             />
             <LoginInput
               onChange={this.updatePasswordInput}
@@ -71,14 +71,14 @@ class Login extends Component {
 
             <CheckboxContainer>
               <CheckboxInput type="checkbox" />
-              <CheckboxParagraph>Show Password</CheckboxParagraph>
+              <CheckboxText>Show Password</CheckboxText>
             </CheckboxContainer>
 
             <LoginButton type="submit">Login</LoginButton>
-            <LoginParagraph>
+            <LoginText>
               {`Dont have an account?`}
               <LoginSpan>{`Sign up, it's free!`}</LoginSpan>
-            </LoginParagraph>
+            </LoginText>
           </LoginForm>
         </LoginContent>
       </LoginContainer>
