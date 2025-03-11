@@ -6,8 +6,11 @@ export const SidebarMenuContainer = styled.aside`
   justify-content: space-between;
   width: 20%;
   height: 82.5vh;
-  padding: 0em 2.25em 4em 2.25em;
   background-color: rgb(25, 25, 25);
+
+  @media screen and (max-width: 992px) {
+    display: none;
+  }
 `;
 
 export const MenuList = styled.ul`
@@ -19,6 +22,7 @@ export const MenuList = styled.ul`
 export const FooterContainer = styled.footer`
   display: flex;
   flex-direction: column;
+  padding: 0em 2.25em 4em 2.25em;
 `;
 
 export const ContactHeading = styled.h3`

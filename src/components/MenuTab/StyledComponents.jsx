@@ -3,13 +3,16 @@ import styled from "styled-components";
 export const MenuTabContainer = styled.li`
   display: flex;
   align-items: center;
+  padding: 0 2em;
+  color: ${(props) => props.tabIconColor};
+  background-color: ${(props) => props.tabBgColor};
   cursor: pointer;
 `;
 
 export const TabHeading = styled.h2`
   margin-left: 1em;
-  color: rgb(251, 251, 250);
+  color: rgb(254, 254, 254);
   font-size: 1.6rem;
-  font-weight: 500;
+  font-weight: ${(props) => props.tabTextFontWeight};
   font-family: "Roboto";
 `;

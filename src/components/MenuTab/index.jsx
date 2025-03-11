@@ -1,27 +1,36 @@
-import { IoMdHome } from "react-icons/io";
-// import { HiFire } from "react-icons/hi";
-// import { SiYoutubegaming } from "react-icons/si";
-// import { MdOutlinePlaylistAdd } from "react-icons/md";
-
 import { MenuTabContainer, TabHeading } from "./StyledComponents";
+import { Link } from "react-router-dom";
 
-// props
+const MenuTab = (props) => {
+  const { tabInfo, activeTab, onUpdateActiveTab } = props;
+  const { id, link, icon, displayText } = tabInfo;
+  // variable = if its active button: red color, else white color
 
-const MenuTab = () => {
-  // const { tabInfo } = props;
-  // const { icon, displayText } = tabInfo;
+  const tabIconColor = activeTab === id ? "rgb(254, 0, 0)" : "rgb(96, 96, 96)";
+  const tabBgColor = activeTab === id ? "rgb(49, 49, 49)" : "rgb(24, 24, 24)";
+  const tabTextFontWeight = activeTab === id ? "500" : "400";
+
+  const updateActiveTab = () => {
+    onUpdateActiveTab(id);
+  };
+
+  console.log(tabIconColor);
 
   return (
-    <MenuTabContainer>
-      <IoMdHome color="rgb(96, 96, 96)" size="22.5px" />
+    <Link style={{ textDecoration: "none" }} to={link}>
+      <MenuTabContainer
+        tabIconColor={tabIconColor}
+        tabBgColor={tabBgColor}
+        onClick={updateActiveTab}
+      >
+        {icon}
 
-      <TabHeading>Home</TabHeading>
-    </MenuTabContainer>
+        <TabHeading tabTextFontWeight={tabTextFontWeight}>
+          {displayText}
+        </TabHeading>
+      </MenuTabContainer>
+    </Link>
   );
 };
 
 export default MenuTab;
-
-{
-  /* <FaHome color="rgb(96, 96, 96)" size="22.5px" /> */
-}
