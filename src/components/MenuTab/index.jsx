@@ -6,7 +6,8 @@ const MenuTab = (props) => {
   const { id, link, icon, displayText } = tabInfo;
   // variable = if its active button: red color, else white color
 
-  const tabIconColor = activeTab === id ? "rgb(254, 0, 0)" : "rgb(96, 96, 96)";
+  const tabIconColor =
+    activeTab === id ? "rgb(230, 48, 42)" : "rgb(96, 96, 96)";
   const tabBgColor = activeTab === id ? "rgb(49, 49, 49)" : "rgb(24, 24, 24)";
   const tabTextFontWeight = activeTab === id ? "500" : "400";
 
@@ -14,13 +15,11 @@ const MenuTab = (props) => {
     onUpdateActiveTab(id);
   };
 
-  console.log(tabIconColor);
-
   return (
     <Link style={{ textDecoration: "none" }} to={link}>
       <MenuTabContainer
-        tabIconColor={tabIconColor}
-        tabBgColor={tabBgColor}
+        color={tabIconColor}
+        bgColor={tabBgColor}
         onClick={updateActiveTab}
       >
         {icon}

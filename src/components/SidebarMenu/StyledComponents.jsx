@@ -5,7 +5,7 @@ export const SidebarMenuContainer = styled.aside`
   flex-direction: column;
   justify-content: space-between;
   width: 20%;
-  height: 82.5vh;
+  height: 84.5vh;
   background-color: rgb(25, 25, 25);
 
   @media screen and (max-width: 992px) {

@@ -4,8 +4,8 @@ export const MenuTabContainer = styled.li`
   display: flex;
   align-items: center;
   padding: 0 2em;
-  color: ${(props) => props.tabIconColor};
-  background-color: ${(props) => props.tabBgColor};
+  color: ${(props) => props.color};
+  background-color: ${(props) => props.bgColor};
   cursor: pointer;
 `;
 

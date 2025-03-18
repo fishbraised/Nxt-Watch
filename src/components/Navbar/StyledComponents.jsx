@@ -4,7 +4,7 @@ export const NavbarContainer = styled.nav`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 17.5vh;
+  height: 15.5vh;
   padding: 0 6em;
   background-color: rgb(25, 25, 25);
 `;
@@ -75,4 +75,39 @@ export const LogoutButton = styled.button`
   @media screen and (max-width: 992px) {
     display: none;
   }
+`;
+
+export const ModalContainer = styled.div`
+  padding: 4em;
+  border-radius: 1em;
+  box-shadow: grey 0px 0px 20px;
+  background-color: rgb(15, 15, 15);
+`;
+
+export const ModalHeading = styled.h2`
+  margin: 0;
+  margin-bottom: 1em;
+  color: rgb(251, 251, 250);
+  font-size: 1.8rem;
+  font-weight: 400;
+  font-family: "Roboto";
+`;
+
+export const ButtonContainer = styled.div`
+  display: flex;
+  justify-content: space-around;
+`;
+
+export const ModalButton = styled.button`
+  all: unset;
+
+  padding: 0.5em 1.25em;
+  border: 1px solid ${(props) => props.borderColor};
+  border-radius: 0.125em;
+  color: ${(props) => props.color};
+  background-color: ${(props) => props.bgColor};
+  font-size: 1.6rem;
+  font-weight: 500;
+  font-family: "Roboto";
+  cursor: pointer;
 `;

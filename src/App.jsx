@@ -1,4 +1,5 @@
 import Login from "./components/Login";
+import ProtectedRoute from "./components/ProtectedRoute";
 import Home from "./components/Home";
 import Trending from "./components/Trending";
 import Gaming from "./components/Gaming";
@@ -12,10 +13,10 @@ const App = () => (
   <BrowserRouter>
     <Switch>
       <Route exact path="/login" component={Login} />
-      <Route exact path="/" component={Home} />
-      <Route exact path="/trending" component={Trending} />
-      <Route exact path="/gaming" component={Gaming} />
-      <Route exact path="/saved-videos" component={SavedVideos} />
+      <ProtectedRoute exact path="/" component={Home} />
+      <ProtectedRoute exact path="/trending" component={Trending} />
+      <ProtectedRoute exact path="/gaming" component={Gaming} />
+      <ProtectedRoute exact path="/saved-videos" component={SavedVideos} />
     </Switch>
   </BrowserRouter>
 );

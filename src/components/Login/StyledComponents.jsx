@@ -32,11 +32,12 @@ export const LoginInput = styled.input`
   all: unset;
 
   padding: 0.5em 1em;
-  margin-top: 0.75em;
+  margin-top: 1em;
   border-radius: 0.5em;
   color: rgb(115, 115, 115);
   background-color: rgba(40, 40, 40, 0.4);
-  font-size: 1.8rem;
+  font-size: 1.6rem;
+  font-family: "Roboto";
 
   ::placeholder {
     color: rgb(65, 65, 65);
@@ -45,7 +46,7 @@ export const LoginInput = styled.input`
 
 export const CheckboxContainer = styled.div`
   display: flex;
-  margin-top: 0.5em;
+  margin-top: 0.75em;
 `;
 
 export const CheckboxInput = styled.input`
