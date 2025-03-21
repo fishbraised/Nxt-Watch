@@ -11,6 +11,7 @@ export const NavbarContainer = styled.nav`
 
 export const WebsiteLogo = styled.img`
   width: 150px;
+  cursor: pointer;
 `;
 
 export const RowContainer = styled.div`
@@ -29,6 +30,7 @@ export const LightingModeButton = styled.button`
 
   width: 30px;
   height: 30px;
+  cursor: pointer;
 `;
 
 export const HamburgerButton = styled.button`
@@ -45,6 +47,7 @@ export const HamburgerButton = styled.button`
 export const ProfileIcon = styled.img`
   width: 30px;
   border-radius: 50%;
+  cursor: pointer;
 
   @media screen and (max-width: 992px) {
     display: none;
@@ -56,6 +59,7 @@ export const LogoutIconButton = styled.button`
 
   width: 30px;
   height: 30px;
+  cursor: pointer;
 
   @media screen and (min-width: 992px) {
     display: none;
@@ -78,6 +82,9 @@ export const LogoutButton = styled.button`
 `;
 
 export const ModalContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   padding: 4em;
   border-radius: 1em;
   box-shadow: grey 0px 0px 20px;
@@ -95,7 +102,8 @@ export const ModalHeading = styled.h2`
 
 export const ButtonContainer = styled.div`
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
+  width: 225px;
 `;
 
 export const ModalButton = styled.button`

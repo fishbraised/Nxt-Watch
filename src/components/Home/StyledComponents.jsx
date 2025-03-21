@@ -5,8 +5,6 @@ export const HomeContainer = styled.div`
   background-color: rgb(15, 15, 15);
 `;
 
-export const HomeContent = styled.div``;
-
 export const ResponsiveContainer = styled.div`
   display: flex;
   align-items: flex-start;
@@ -19,11 +17,11 @@ export const MainContainer = styled.main`
   overflow: auto;
 `;
 
-export const MainContentContainer = styled.div`
+export const MainContent = styled.div`
   padding: 2.125em;
 `;
 
-export const SearchContainer = styled.div`
+export const SearchContainer = styled.form`
   display: flex;
   justify-content: space-between;
   height: 32.5px;
@@ -63,11 +61,35 @@ export const SearchButton = styled.button`
   }
 `;
 
-export const VideoList = styled.ul`
+export const HomeVideoList = styled.ul`
   display: flex;
   flex-wrap: wrap;
   padding: 0;
   margin-top: 2em;
   gap: 2em;
   list-style-type: none;
+`;
+
+export const FailureContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const FailureImage = styled.img`
+  width: 110px;
+`;
+
+export const FailureText = styled.p`
+  color: rgb(251, 251, 250);
+  font-size: 1.6rem;
+  font-family: "Roboto";
+`;
+
+export const LoaderContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 19vh;
 `;

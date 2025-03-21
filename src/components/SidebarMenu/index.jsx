@@ -53,6 +53,7 @@ class SidebarMenu extends Component {
 
   render() {
     const { activeTab } = this.state;
+    console.log("activeTab: ", activeTab);
 
     return (
       <SidebarMenuContainer>

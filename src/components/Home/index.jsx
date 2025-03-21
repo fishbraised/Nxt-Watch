@@ -1,24 +1,28 @@
 import Navbar from "../Navbar";
 import SidebarMenu from "../SidebarMenu";
 import PremiumBanner from "../PremiumBanner";
-import VideoItem from "../VideoItem";
+import HomeVideoItem from "../HomeVideoItem";
 
 import {
   HomeContainer,
-  HomeContent,
   ResponsiveContainer,
   MainContainer,
-  MainContentContainer,
+  MainContent,
   SearchContainer,
   SearchInput,
   SearchButton,
-  VideoList,
+  HomeVideoList,
+  FailureContainer,
+  FailureImage,
+  FailureText,
+  LoaderContainer,
 } from "./StyledComponents";
 
 import Cookies from "js-cookie";
 
 import { IoIosSearch } from "react-icons/io";
 import { Component } from "react";
+import { Watch } from "react-loader-spinner";
 
 const apiStatusConstants = {
   initial: "INITIAL",
@@ -32,6 +36,16 @@ class Home extends Component {
     searchValue: "",
     apiStatus: apiStatusConstants.initial,
     videoData: [],
+    displayBanner: true,
+  };
+
+  closeBanner = () => {
+    this.setState({ displayBanner: false });
+  };
+
+  conductSearch = (event) => {
+    event.preventDefault();
+    this.getVideoData();
   };
 
   updateSearchValue = (event) => {
@@ -55,21 +69,26 @@ class Home extends Component {
     const { videoData } = this.state;
 
     return (
-      <VideoList>
+      <HomeVideoList>
         {videoData.map((eachObj) => (
-          <VideoItem key={eachObj.id} videoInfo={eachObj} />
+          <HomeVideoItem key={eachObj.id} videoInfo={eachObj} />
         ))}
-      </VideoList>
+      </HomeVideoList>
     );
   };
 
-  renderFailureView = () => {
-    console.log("Failure.");
-  };
+  renderFailureView = () => (
+    <FailureContainer>
+      <FailureImage src="https://res.cloudinary.com/dkoqbt4pc/image/upload/v1742306194/Nxt%20Watch/error-picture.png" />
+      <FailureText>An error in obtaining server data has occurred.</FailureText>
+    </FailureContainer>
+  );
 
-  renderLoader = () => {
-    console.log("Loading");
-  };
+  renderLoader = () => (
+    <LoaderContainer>
+      <Watch width="80px" height="80px" color="rgb(230, 48, 42)" />
+    </LoaderContainer>
+  );
 
   getVideoData = async () => {
     this.setState({ apiStatus: apiStatusConstants.inProgress });
@@ -85,12 +104,9 @@ class Home extends Component {
       },
     };
     const response = await fetch(URL, options);
-    const data = await response.json();
-
-    console.log(response);
-    console.log(data);
 
     if (response.ok) {
+      const data = await response.json();
       const formattedVideoData = data.videos.map((eachObj) => ({
         channel: {
           name: eachObj.channel.name,
@@ -102,8 +118,6 @@ class Home extends Component {
         title: eachObj.title,
         viewCount: eachObj.view_count,
       }));
-
-      console.log("Format: ", formattedVideoData);
 
       this.setState({
         apiStatus: apiStatusConstants.success,
@@ -119,37 +133,35 @@ class Home extends Component {
   };
 
   render() {
-    const { searchValue } = this.state;
+    const { searchValue, displayBanner } = this.state;
 
     return (
       <HomeContainer>
-        <HomeContent>
-          <Navbar />
+        <Navbar />
 
-          <ResponsiveContainer>
-            <SidebarMenu />
+        <ResponsiveContainer>
+          <SidebarMenu />
 
-            <MainContainer>
-              <PremiumBanner />
+          <MainContainer>
+            {displayBanner && <PremiumBanner closeBanner={this.closeBanner} />}
 
-              <MainContentContainer>
-                <SearchContainer>
-                  <SearchInput
-                    onChange={this.updateSearchValue}
-                    value={searchValue}
-                    placeholder="Search"
-                  />
+            <MainContent>
+              <SearchContainer onSubmit={this.conductSearch}>
+                <SearchInput
+                  onChange={this.updateSearchValue}
+                  value={searchValue}
+                  placeholder="Search"
+                />
 
-                  <SearchButton>
-                    <IoIosSearch color="rgb(96, 96, 96)" size="20px" />
-                  </SearchButton>
-                </SearchContainer>
+                <SearchButton type="submit">
+                  <IoIosSearch color="rgb(96, 96, 96)" size="20px" />
+                </SearchButton>
+              </SearchContainer>
 
-                {this.renderSwitch()}
-              </MainContentContainer>
-            </MainContainer>
-          </ResponsiveContainer>
-        </HomeContent>
+              {this.renderSwitch()}
+            </MainContent>
+          </MainContainer>
+        </ResponsiveContainer>
       </HomeContainer>
     );
   }

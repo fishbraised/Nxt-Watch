@@ -1,5 +1,5 @@
 import {
-  VideoItemContainer,
+  HomeVideoItemContainer,
   ThumbnailImage,
   InfoContainer,
   ChannelProfile,
@@ -11,13 +11,13 @@ import {
   DateText,
 } from "./StyledComponents";
 
-const VideoItem = (props) => {
+const HomeVideoItem = (props) => {
   const { videoInfo } = props;
   const { channel, publishedAt, thumbnailUrl, title, viewCount } = videoInfo;
   const { name, profileImageUrl } = channel;
 
   return (
-    <VideoItemContainer>
+    <HomeVideoItemContainer>
       <ThumbnailImage src={thumbnailUrl} />
 
       <InfoContainer>
@@ -25,7 +25,6 @@ const VideoItem = (props) => {
 
         <TextInfoContainer>
           <VideoTitle>{title}</VideoTitle>
-
           <ChannelName>{name}</ChannelName>
 
           <ViewsDateContainer>
@@ -34,8 +33,8 @@ const VideoItem = (props) => {
           </ViewsDateContainer>
         </TextInfoContainer>
       </InfoContainer>
-    </VideoItemContainer>
+    </HomeVideoItemContainer>
   );
 };
 
-export default VideoItem;
+export default HomeVideoItem;
