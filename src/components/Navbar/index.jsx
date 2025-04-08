@@ -1,3 +1,5 @@
+import VideosContext from "../../context/VideosContext";
+
 import {
   NavbarContainer,
   WebsiteLogo,
@@ -13,102 +15,111 @@ import {
   ModalButton,
 } from "./StyledComponents";
 
+import Cookies from "js-cookie";
+import Popup from "reactjs-popup";
 import { FaMoon } from "react-icons/fa6";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { FiLogIn } from "react-icons/fi";
-import Popup from "reactjs-popup";
-
-import Cookies from "js-cookie";
 import { Link, withRouter } from "react-router-dom";
 
-const Navbar = (props) => {
-  const onLogoutClick = () => {
-    const { history } = props;
+const Navbar = (props) => (
+  <VideosContext.Consumer>
+    {(value) => {
+      const { isDarkTheme, toggleLightingTheme } = value;
 
-    Cookies.remove("jwt_token");
-    history.replace("/login");
-  };
+      const onLogoutClick = () => {
+        const { history } = props;
 
-  return (
-    <NavbarContainer>
-      <Link to="/">
-        <WebsiteLogo src="https://res.cloudinary.com/dkoqbt4pc/image/upload/v1741096340/Nxt%20Watch/nxt-watch-logo-dark-theme.png" />
-      </Link>
+        Cookies.remove("jwt_token");
+        history.replace("/login");
+      };
 
-      <RowContainer>
-        <LightingModeButton>
-          <FaMoon color="rgba(251, 251, 250)" size="100%" />
-        </LightingModeButton>
+      const activeWebsiteLogo = isDarkTheme
+        ? "https://res.cloudinary.com/dkoqbt4pc/image/upload/v1741096340/Nxt%20Watch/nxt-watch-logo-dark-theme.png"
+        : "https://res.cloudinary.com/dkoqbt4pc/image/upload/v1741096368/Nxt%20Watch/nxt-watch-logo-light-theme.png";
 
-        <HamburgerButton>
-          <GiHamburgerMenu color="rgba(251, 251, 250)" size="100%" />
-        </HamburgerButton>
-        <ProfileIcon src="https://res.cloudinary.com/dkoqbt4pc/image/upload/v1741096682/Nxt%20Watch/default-profile-icon.jpg" />
+      return (
+        <NavbarContainer isDarkTheme={isDarkTheme}>
+          <Link to="/">
+            <WebsiteLogo src={activeWebsiteLogo} />
+          </Link>
 
-        <Popup
-          trigger={
-            <LogoutIconButton>
-              <FiLogIn color="rgba(251, 251, 250)" size="100%" />
-            </LogoutIconButton>
-          }
-          modal
-          nested
-        >
-          {(close) => (
-            <ModalContainer>
-              <ModalHeading>Do you really intend to log out?</ModalHeading>
+          <RowContainer>
+            <LightingModeButton onClick={toggleLightingTheme}>
+              <FaMoon color="rgba(251, 251, 250)" size="100%" />
+            </LightingModeButton>
 
-              <ButtonContainer>
-                <ModalButton
-                  borderColor="rgb(126, 133, 142)"
-                  color="rgb(126, 133, 142)"
-                  bgColor="none"
-                  onClick={close}
-                >
-                  Cancel
-                </ModalButton>
-                <ModalButton
-                  borderColor="none"
-                  color="rgb(251, 251, 250)"
-                  bgColor="rgb(230, 48, 42)"
-                  onClick={onLogoutClick}
-                >
-                  Confirm
-                </ModalButton>
-              </ButtonContainer>
-            </ModalContainer>
-          )}
-        </Popup>
+            <HamburgerButton>
+              <GiHamburgerMenu color="rgba(251, 251, 250)" size="100%" />
+            </HamburgerButton>
+            <ProfileIcon src="https://res.cloudinary.com/dkoqbt4pc/image/upload/v1741096682/Nxt%20Watch/default-profile-icon.jpg" />
 
-        <Popup trigger={<LogoutButton>Logout</LogoutButton>} modal nested>
-          {(close) => (
-            <ModalContainer>
-              <ModalHeading>Do you really intend to log out?</ModalHeading>
+            <Popup
+              trigger={
+                <LogoutIconButton>
+                  <FiLogIn color="rgba(251, 251, 250)" size="100%" />
+                </LogoutIconButton>
+              }
+              modal
+              nested
+            >
+              {(close) => (
+                <ModalContainer>
+                  <ModalHeading>Do you really intend to log out?</ModalHeading>
 
-              <ButtonContainer>
-                <ModalButton
-                  borderColor="rgb(126, 133, 142)"
-                  color="rgb(126, 133, 142)"
-                  bgColor="none"
-                  onClick={close}
-                >
-                  Cancel
-                </ModalButton>
-                <ModalButton
-                  borderColor="none"
-                  color="rgb(251, 251, 250)"
-                  bgColor="rgb(230, 48, 42);"
-                  onClick={onLogoutClick}
-                >
-                  Confirm
-                </ModalButton>
-              </ButtonContainer>
-            </ModalContainer>
-          )}
-        </Popup>
-      </RowContainer>
-    </NavbarContainer>
-  );
-};
+                  <ButtonContainer>
+                    <ModalButton
+                      borderColor="rgb(126, 133, 142)"
+                      color="rgb(126, 133, 142)"
+                      bgColor="none"
+                      onClick={close}
+                    >
+                      Cancel
+                    </ModalButton>
+                    <ModalButton
+                      borderColor="none"
+                      color="rgb(251, 251, 250)"
+                      bgColor="rgb(230, 48, 42)"
+                      onClick={onLogoutClick}
+                    >
+                      Confirm
+                    </ModalButton>
+                  </ButtonContainer>
+                </ModalContainer>
+              )}
+            </Popup>
+
+            <Popup trigger={<LogoutButton>Logout</LogoutButton>} modal nested>
+              {(close) => (
+                <ModalContainer>
+                  <ModalHeading>Do you really intend to log out?</ModalHeading>
+
+                  <ButtonContainer>
+                    <ModalButton
+                      borderColor="rgb(126, 133, 142)"
+                      color="rgb(126, 133, 142)"
+                      bgColor="none"
+                      onClick={close}
+                    >
+                      Cancel
+                    </ModalButton>
+                    <ModalButton
+                      borderColor="none"
+                      color="rgb(251, 251, 250)"
+                      bgColor="rgb(230, 48, 42);"
+                      onClick={onLogoutClick}
+                    >
+                      Confirm
+                    </ModalButton>
+                  </ButtonContainer>
+                </ModalContainer>
+              )}
+            </Popup>
+          </RowContainer>
+        </NavbarContainer>
+      );
+    }}
+  </VideosContext.Consumer>
+);
 
 export default withRouter(Navbar);

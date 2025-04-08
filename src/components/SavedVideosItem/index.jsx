@@ -1,5 +1,5 @@
 import {
-  TrendingVideoItemContainer,
+  SavedVideoItemContainer,
   ThumbnailImage,
   InfoContainer,
   VideoTitle,
@@ -10,15 +10,15 @@ import {
 
 import { Link } from "react-router-dom";
 
-const TrendingVideoItem = (props) => {
-  const { trendingVideoInfo } = props;
+const SavedVideosItem = (props) => {
+  const { savedVideoInfo } = props;
   const { channel, id, publishedAt, thumbnailUrl, title, viewCount } =
-    trendingVideoInfo;
+    savedVideoInfo;
   const { name, profileImageUrl } = channel;
 
   return (
     <Link to={`/videos/${id}`}>
-      <TrendingVideoItemContainer>
+      <SavedVideoItemContainer>
         <ThumbnailImage src={thumbnailUrl} />
 
         <InfoContainer>
@@ -31,9 +31,9 @@ const TrendingVideoItem = (props) => {
             <ViewsDateText>{publishedAt}</ViewsDateText>
           </ViewsDateContainer>
         </InfoContainer>
-      </TrendingVideoItemContainer>
+      </SavedVideoItemContainer>
     </Link>
   );
 };
 
-export default TrendingVideoItem;
+export default SavedVideosItem;

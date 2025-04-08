@@ -12,8 +12,8 @@ export const ResponsiveContainer = styled.div`
 
 export const MainContainer = styled.main`
   flex-grow: 1;
-  height: 84.5vh;
   width: 81.5%;
+  height: 84.5vh;
   overflow: auto;
 `;
 
@@ -24,8 +24,8 @@ export const MainContent = styled.div`
 export const SearchContainer = styled.form`
   display: flex;
   justify-content: space-between;
-  height: 32.5px;
   width: 400px;
+  height: 32.5px;
   border: 2px solid rgb(56, 56, 56);
   border-radius: 0.5em;
 `;
@@ -68,6 +68,11 @@ export const HomeVideoList = styled.ul`
   margin-top: 2em;
   gap: 2em;
   list-style-type: none;
+
+  > a {
+    width: 31%;
+    text-decoration: none;
+  }
 `;
 
 export const FailureContainer = styled.div`
@@ -91,5 +96,5 @@ export const LoaderContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 19vh;
+  height: 34vh;
 `;

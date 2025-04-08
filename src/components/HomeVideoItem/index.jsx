@@ -7,33 +7,38 @@ import {
   VideoTitle,
   ChannelName,
   ViewsDateContainer,
-  ViewsText,
-  DateText,
+  ViewsDateText,
 } from "./StyledComponents";
+
+import { Link } from "react-router-dom";
 
 const HomeVideoItem = (props) => {
   const { videoInfo } = props;
-  const { channel, publishedAt, thumbnailUrl, title, viewCount } = videoInfo;
+  const { channel, id, publishedAt, thumbnailUrl, title, viewCount } =
+    videoInfo;
   const { name, profileImageUrl } = channel;
 
   return (
-    <HomeVideoItemContainer>
-      <ThumbnailImage src={thumbnailUrl} />
+    <Link to={`/videos/${id}`}>
+      <HomeVideoItemContainer>
+        <ThumbnailImage src={thumbnailUrl} />
 
-      <InfoContainer>
-        <ChannelProfile src={profileImageUrl} />
+        <InfoContainer>
+          <ChannelProfile src={profileImageUrl} />
 
-        <TextInfoContainer>
-          <VideoTitle>{title}</VideoTitle>
-          <ChannelName>{name}</ChannelName>
+          <TextInfoContainer>
+            <VideoTitle>{title}</VideoTitle>
+            <ChannelName>{name}</ChannelName>
 
-          <ViewsDateContainer>
-            <ViewsText>{viewCount}</ViewsText>
-            <DateText> • {publishedAt}</DateText>
-          </ViewsDateContainer>
-        </TextInfoContainer>
-      </InfoContainer>
-    </HomeVideoItemContainer>
+            <ViewsDateContainer>
+              <ViewsDateText>{viewCount} views</ViewsDateText>
+              <ViewsDateText>•</ViewsDateText>
+              <ViewsDateText>{publishedAt}</ViewsDateText>
+            </ViewsDateContainer>
+          </TextInfoContainer>
+        </InfoContainer>
+      </HomeVideoItemContainer>
+    </Link>
   );
 };
 

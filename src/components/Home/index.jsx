@@ -19,10 +19,9 @@ import {
 } from "./StyledComponents";
 
 import Cookies from "js-cookie";
-
 import { IoIosSearch } from "react-icons/io";
+import { PuffLoader } from "react-spinners";
 import { Component } from "react";
-import { Watch } from "react-loader-spinner";
 
 const apiStatusConstants = {
   initial: "INITIAL",
@@ -52,19 +51,6 @@ class Home extends Component {
     this.setState({ searchValue: event.target.value });
   };
 
-  renderSwitch = () => {
-    const { apiStatus } = this.state;
-
-    switch (apiStatus) {
-      case apiStatusConstants.success:
-        return this.renderSuccessView();
-      case apiStatusConstants.failure:
-        return this.renderFailureView();
-      case apiStatusConstants.inProgress:
-        return this.renderLoader();
-    }
-  };
-
   renderSuccessView = () => {
     const { videoData } = this.state;
 
@@ -86,9 +72,22 @@ class Home extends Component {
 
   renderLoader = () => (
     <LoaderContainer>
-      <Watch width="80px" height="80px" color="rgb(230, 48, 42)" />
+      <PuffLoader size="100px" color="rgb(230, 48, 42)" />
     </LoaderContainer>
   );
+
+  renderSwitch = () => {
+    const { apiStatus } = this.state;
+
+    switch (apiStatus) {
+      case apiStatusConstants.success:
+        return this.renderSuccessView();
+      case apiStatusConstants.failure:
+        return this.renderFailureView();
+      case apiStatusConstants.inProgress:
+        return this.renderLoader();
+    }
+  };
 
   getVideoData = async () => {
     this.setState({ apiStatus: apiStatusConstants.inProgress });

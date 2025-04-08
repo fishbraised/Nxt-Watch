@@ -1,10 +1,10 @@
 import { MenuTabContainer, TabHeading } from "./StyledComponents";
+
 import { Link } from "react-router-dom";
 
 const MenuTab = (props) => {
   const { tabInfo, activeTab, onUpdateActiveTab } = props;
   const { id, link, icon, displayText } = tabInfo;
-  // variable = if its active button: red color, else white color
 
   const tabIconColor =
     activeTab === id ? "rgb(230, 48, 42)" : "rgb(96, 96, 96)";
@@ -23,7 +23,6 @@ const MenuTab = (props) => {
         onClick={updateActiveTab}
       >
         {icon}
-
         <TabHeading tabTextFontWeight={tabTextFontWeight}>
           {displayText}
         </TabHeading>

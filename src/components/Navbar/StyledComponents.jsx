@@ -6,7 +6,8 @@ export const NavbarContainer = styled.nav`
   align-items: center;
   height: 15.5vh;
   padding: 0 6em;
-  background-color: rgb(25, 25, 25);
+  background-color: ${(props) =>
+    props.isDarkTheme ? "rgb(25, 25, 25)" : "white"};
 `;
 
 export const WebsiteLogo = styled.img`
