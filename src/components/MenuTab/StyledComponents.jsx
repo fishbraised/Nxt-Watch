@@ -11,7 +11,8 @@ export const MenuTabContainer = styled.li`
 
 export const TabHeading = styled.h2`
   margin-left: 1em;
-  color: rgb(254, 254, 254);
+  color: ${(props) =>
+    props.isDarkTheme ? "rgb(255, 255, 255)" : "rgb(65, 65, 65)"};
   font-size: 1.6rem;
   font-weight: ${(props) => props.tabTextFontWeight};
   font-family: "Roboto";

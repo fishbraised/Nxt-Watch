@@ -3,6 +3,8 @@ import SidebarMenu from "../SidebarMenu";
 import PremiumBanner from "../PremiumBanner";
 import HomeVideoItem from "../HomeVideoItem";
 
+import VideosContext from "../../context/VideosContext";
+
 import {
   HomeContainer,
   ResponsiveContainer,
@@ -134,35 +136,43 @@ class Home extends Component {
   render() {
     const { searchValue, displayBanner } = this.state;
 
-    return (
-      <HomeContainer>
-        <Navbar />
+    <VideosContext.Consumer>
+      {(value) => {
+        const { isDarkTheme } = value;
 
-        <ResponsiveContainer>
-          <SidebarMenu />
+        return (
+          <HomeContainer isDarkTheme={isDarkTheme}>
+            <Navbar />
 
-          <MainContainer>
-            {displayBanner && <PremiumBanner closeBanner={this.closeBanner} />}
+            <ResponsiveContainer>
+              <SidebarMenu />
 
-            <MainContent>
-              <SearchContainer onSubmit={this.conductSearch}>
-                <SearchInput
-                  onChange={this.updateSearchValue}
-                  value={searchValue}
-                  placeholder="Search"
-                />
+              <MainContainer>
+                {displayBanner && (
+                  <PremiumBanner closeBanner={this.closeBanner} />
+                )}
 
-                <SearchButton type="submit">
-                  <IoIosSearch color="rgb(96, 96, 96)" size="20px" />
-                </SearchButton>
-              </SearchContainer>
+                <MainContent>
+                  <SearchContainer onSubmit={this.conductSearch}>
+                    <SearchInput
+                      onChange={this.updateSearchValue}
+                      value={searchValue}
+                      placeholder="Search"
+                    />
 
-              {this.renderSwitch()}
-            </MainContent>
-          </MainContainer>
-        </ResponsiveContainer>
-      </HomeContainer>
-    );
+                    <SearchButton type="submit">
+                      <IoIosSearch color="rgb(96, 96, 96)" size="20px" />
+                    </SearchButton>
+                  </SearchContainer>
+
+                  {this.renderSwitch()}
+                </MainContent>
+              </MainContainer>
+            </ResponsiveContainer>
+          </HomeContainer>
+        );
+      }}
+    </VideosContext.Consumer>;
   }
 }
 

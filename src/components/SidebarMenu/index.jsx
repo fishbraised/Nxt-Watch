@@ -50,7 +50,7 @@ class SidebarMenu extends Component {
     return (
       <VideosContext.Consumer>
         {(value) => {
-          const { activeTab, updateActiveTab } = value;
+          const { activeTab, updateActiveTab, isDarkTheme } = value;
           console.log("Active tab: ", activeTab);
 
           const onUpdateActiveTab = (id) => {
@@ -58,7 +58,7 @@ class SidebarMenu extends Component {
           };
 
           return (
-            <SidebarMenuContainer>
+            <SidebarMenuContainer isDarkTheme={isDarkTheme}>
               <MenuList>
                 {menuTabsData.map((eachObj) => (
                   <MenuTab
@@ -71,7 +71,9 @@ class SidebarMenu extends Component {
               </MenuList>
 
               <FooterContainer>
-                <ContactHeading>CONTACT US</ContactHeading>
+                <ContactHeading isDarkTheme={isDarkTheme}>
+                  CONTACT US
+                </ContactHeading>
 
                 <ContactContainer>
                   <ContactPlatform src="https://assets.ccbp.in/frontend/react-js/nxt-watch-facebook-logo-img.png" />
@@ -79,7 +81,7 @@ class SidebarMenu extends Component {
                   <ContactPlatform src="https://assets.ccbp.in/frontend/react-js/nxt-watch-linked-in-logo-img.png" />
                 </ContactContainer>
 
-                <FooterDescription>
+                <FooterDescription isDarkTheme={isDarkTheme}>
                   Enjoy! Now to see your channels and recommendations!
                 </FooterDescription>
               </FooterContainer>

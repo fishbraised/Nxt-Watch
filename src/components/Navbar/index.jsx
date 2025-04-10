@@ -46,26 +46,39 @@ const Navbar = (props) => (
 
           <RowContainer>
             <LightingModeButton onClick={toggleLightingTheme}>
-              <FaMoon color="rgba(251, 251, 250)" size="100%" />
+              <FaMoon
+                color={isDarkTheme ? "rgb(255, 255, 255)" : "rgb(25, 25, 25)"}
+                size="100%"
+              />
             </LightingModeButton>
 
             <HamburgerButton>
-              <GiHamburgerMenu color="rgba(251, 251, 250)" size="100%" />
+              <GiHamburgerMenu
+                color={isDarkTheme ? "rgb(255, 255, 255)" : "rgb(25, 25, 25)"}
+                size="100%"
+              />
             </HamburgerButton>
             <ProfileIcon src="https://res.cloudinary.com/dkoqbt4pc/image/upload/v1741096682/Nxt%20Watch/default-profile-icon.jpg" />
 
             <Popup
               trigger={
                 <LogoutIconButton>
-                  <FiLogIn color="rgba(251, 251, 250)" size="100%" />
+                  <FiLogIn
+                    color={
+                      isDarkTheme ? "rgb(255, 255, 255)" : "rgb(25, 25, 25)"
+                    }
+                    size="100%"
+                  />
                 </LogoutIconButton>
               }
               modal
               nested
             >
               {(close) => (
-                <ModalContainer>
-                  <ModalHeading>Do you really intend to log out?</ModalHeading>
+                <ModalContainer isDarkTheme={isDarkTheme}>
+                  <ModalHeading isDarkTheme={isDarkTheme}>
+                    Do you really intend to log out?
+                  </ModalHeading>
 
                   <ButtonContainer>
                     <ModalButton
@@ -89,10 +102,18 @@ const Navbar = (props) => (
               )}
             </Popup>
 
-            <Popup trigger={<LogoutButton>Logout</LogoutButton>} modal nested>
+            <Popup
+              trigger={
+                <LogoutButton isDarkTheme={isDarkTheme}>Logout</LogoutButton>
+              }
+              modal
+              nested
+            >
               {(close) => (
-                <ModalContainer>
-                  <ModalHeading>Do you really intend to log out?</ModalHeading>
+                <ModalContainer isDarkTheme={isDarkTheme}>
+                  <ModalHeading isDarkTheme={isDarkTheme}>
+                    Do you really intend to log out?
+                  </ModalHeading>
 
                   <ButtonContainer>
                     <ModalButton

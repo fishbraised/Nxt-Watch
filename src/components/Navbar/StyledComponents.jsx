@@ -1,3 +1,4 @@
+import { RiGalleryFill } from "react-icons/ri";
 import styled from "styled-components";
 
 export const NavbarContainer = styled.nav`
@@ -7,7 +8,7 @@ export const NavbarContainer = styled.nav`
   height: 15.5vh;
   padding: 0 6em;
   background-color: ${(props) =>
-    props.isDarkTheme ? "rgb(25, 25, 25)" : "white"};
+    props.isDarkTheme ? "rgb(25, 25, 25)" : "rgb(255, 255, 255)"};
 `;
 
 export const WebsiteLogo = styled.img`
@@ -71,9 +72,12 @@ export const LogoutButton = styled.button`
   all: unset;
 
   padding: 0.25em 1em;
-  border: 1px solid rgb(251, 251, 250);
+  border: 1px solid
+    ${(props) =>
+      props.isDarkTheme ? "rgb(255, 255, 255)" : "rgb(230, 48, 42)"};
   border-radius: 0.125em;
-  color: rgb(251, 251, 250);
+  color: ${(props) =>
+    props.isDarkTheme ? "rgb(255, 255, 255)" : "rgb(230, 48, 42)"};
   font-size: 1.6rem;
   cursor: pointer;
 
@@ -89,13 +93,15 @@ export const ModalContainer = styled.div`
   padding: 4em;
   border-radius: 1em;
   box-shadow: grey 0px 0px 20px;
-  background-color: rgb(15, 15, 15);
+  background-color: ${(props) =>
+    props.isDarkTheme ? "rgb(25, 25, 25)" : "rgb(255, 255, 255)"};
 `;
 
 export const ModalHeading = styled.h2`
   margin: 0;
   margin-bottom: 1em;
-  color: rgb(251, 251, 250);
+  color: ${(props) =>
+    props.isDarkTheme ? "rgb(255, 255, 255)" : "rgb(110, 0, 0)"};
   font-size: 1.8rem;
   font-weight: 400;
   font-family: "Roboto";

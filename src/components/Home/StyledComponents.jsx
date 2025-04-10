@@ -2,7 +2,8 @@ import styled from "styled-components";
 
 export const HomeContainer = styled.div`
   min-height: 100vh;
-  background-color: rgb(15, 15, 15);
+  background-color: ${(props) =>
+    props.isDarkTheme ? "rgb(15, 15, 15)" : "rgb(250, 250, 250)"};
 `;
 
 export const ResponsiveContainer = styled.div`
